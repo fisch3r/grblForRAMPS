@@ -32,7 +32,7 @@
 
 // Default settings. Used when resetting EEPROM. Change to desired name in defaults.h
 //#define DEFAULTS_GENERIC
-#define DEFAULTS_PULPITROCKCNC
+#define DEFAULTS_CYCLONE_2_1
 
 // Serial baud rate
 #define BAUD_RATE 115200
@@ -74,9 +74,16 @@
 // on separate pin, but homed in one cycle. Also, it should be noted that the function of hard limits 
 // will not be affected by pin sharing.
 // NOTE: Defaults are set for a traditional 3-axis CNC machine. Z-axis first to clear, followed by X & Y.
-#define HOMING_CYCLE_0 (1<<Z_AXIS)                // REQUIRED: First move Z to clear workspace.
-#define HOMING_CYCLE_1 ((1<<X_AXIS)|(1<<Y_AXIS))  // OPTIONAL: Then move X,Y at the same time.
-// #define HOMING_CYCLE_2                         // OPTIONAL: Uncomment and add axes mask to enable
+#ifdef DEFAULTS_CYCLONE_2_1                           // Cyclone has no Z axis limit switch by default
+    #define HOMING_CYCLE_0 (1<<X_AXIS)                // REQUIRED: First move X axis.
+    #define HOMING_CYCLE_1 (1<<Y_AXIS)                // OPTIONAL: Then move Y axis.
+#else
+    #define HOMING_CYCLE_0 (1<<Z_AXIS)                // REQUIRED: First move Z to clear workspace.
+    #define HOMING_CYCLE_1 ((1<<X_AXIS)|(1<<Y_AXIS))  // OPTIONAL: Then move X,Y at the same time.
+    // #define HOMING_CYCLE_2                         // OPTIONAL: Uncomment and add axes mask to enable
+#endif
+
+
 
 // Number of homing cycles performed after when the machine initially jogs to limit switches.
 // This help in preventing overshoot and should improve repeatability. This value should be one or 

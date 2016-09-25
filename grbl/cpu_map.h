@@ -38,7 +38,7 @@
 #endif
 
 #ifdef CPU_MAP_ATMEGA2560_RAMPS_1_4 // (Arduino Mega 2560)+Ramps1.4 Working Arsi
-  #include "cpu_map/cpu_map_atmega2560_ramps14.h"
+  #include "cpu_map_atmega2560_ramps14.h"
 #endif
 
 /* 

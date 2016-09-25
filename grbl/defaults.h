@@ -91,7 +91,7 @@
 #ifdef DEFAULTS_CYCLONE_2_1
   // Description: GRBL settings for Cyclone PCB Factory v2.1
   // http://reprap.org/wiki/Cyclone_PCB_Factory
-  #include "defaults/defaults_cyclone2_1.h"
+  #include "defaults_cyclone2_1.h"
 #endif
 
 #ifdef DEFAULTS_PULPITROCKCNC

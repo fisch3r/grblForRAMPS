@@ -26,7 +26,7 @@ extern "C" {
 	/**
 	* Initialize the steppers (Step, Dir and Enable Pins)
 	*/
-	inline void rampsInitSteppers() {
+	static inline void rampsInitSteppers() {
 
     // Initialize Step Pins
     #if defined(X_STEP_PIN) && X_STEP_PIN > -1
@@ -66,7 +66,7 @@ extern "C" {
 	* Set the Enable Pin signal (either to high or low)
 	* @param value
 	*/
-	inline void rampsWriteDisable(uint8_t value) {
+	static inline void rampsWriteDisable(uint8_t value) {
 		if (CHECK(value, STEPPERS_DISABLE_BIT)) {
 			WRITE(X_ENABLE_PIN, HIGH);
 			WRITE(Y_ENABLE_PIN, HIGH);
@@ -82,7 +82,7 @@ extern "C" {
 	* Write stepper pulse (Step Pins)
 	* @param value
 	*/
-	inline void rampsWriteSteps(uint8_t value) {
+	static inline void rampsWriteSteps(uint8_t value) {
 		if (CHECK(value, X_STEP_BIT)) {
 			WRITE(X_STEP_PIN, HIGH);
 		} else {
@@ -104,7 +104,7 @@ extern "C" {
   * Write stepper direction (Direction Pins)
 	* @param value
 	*/
-	inline void rampsWriteDirections(uint8_t value) {
+	static inline void rampsWriteDirections(uint8_t value) {
 		if (CHECK(value, X_DIRECTION_BIT)) {
 			WRITE(X_DIR_PIN, HIGH);
 		} else {
@@ -125,7 +125,7 @@ extern "C" {
   /**
   * Enable interrupts for the limit switches
   */ 
-  inline void rampsLimitsEnableInterrups() {
+  static inline void rampsLimitsEnableInterrups() {
     
     // First enable the External Interrupts
     // When changing the ISCn bit, an interrupt can occur. Therefore, it is recommended to:
@@ -164,7 +164,7 @@ extern "C" {
   /**
   * Disable interrupts for the limit switches
   */ 
-  inline void rampsLimitsDisableInterrups() {
+  static inline void rampsLimitsDisableInterrups() {
 
       #if defined(X_MIN_PIN) && X_MIN_PIN > -1    
         EIMSK &= ~(1 << X_MIN_INT);       // Disable external interrupt INT5 to ensure no interrupts are generated
@@ -186,7 +186,7 @@ extern "C" {
   * Enable the limit switches
   * @param value whether hard limits should be enabled
   */ 
-  inline void rampsInitLimits(bool hardLimitEnable) {
+  static inline void rampsInitLimits(bool hardLimitEnable) {
     
     #if defined(X_MIN_PIN) && X_MIN_PIN > -1
       SET_INPUT(X_MIN_PIN);    
@@ -227,7 +227,7 @@ extern "C" {
   * e.g. X_AXIS is (1<<2) or bit 2, Y_AXIS is (1<<1) or bit 1 and Z_AXIS is (1<<0) or bit 0
   * @return the status on the limit switches as a uint8_t
   */ 
-  inline uint8_t rampsCheckLimits() {
+  static inline uint8_t rampsCheckLimits() {
     // TODO: wrap witin a "#if defined(___MIN_PIN) && ___MIN_PIN > -1)" clause
     return ((READ(X_MIN_PIN)<<X_LIMIT_BIT)|(READ(Y_MIN_PIN)<<Y_LIMIT_BIT)|(READ(Z_MAX_PIN)<<Z_LIMIT_BIT));
   }
@@ -237,7 +237,7 @@ extern "C" {
   * @param the status on the limit switches as a uint8_t
   * @param a string to print
   */ 
-  inline void rampsPrintLimitStatus(const char *s, uint8_t limit_state) {
+  static inline void rampsPrintLimitStatus(const char *s, uint8_t limit_state) {
       printString(s);
       print_unsigned_int8(limit_state,2,N_AXIS);
   }
