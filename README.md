@@ -1,3 +1,5 @@
+Branch description: only working for Cyclone 2.1 and RAMPS 1.4. Includes adapted homing sequence and works with Arduino IDE.
+
 ![GitHub Logo](/doc/media/Grbl Logo 250px.png)
 
 
