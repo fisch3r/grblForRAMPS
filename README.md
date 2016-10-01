@@ -1,5 +1,42 @@
 Branch description: only working for Cyclone 2.1 and RAMPS 1.4. Includes adapted homing sequence and works with Arduino IDE.
 
+Output of $$:
+
+```
+$0=10 (step pulse, usec)
+$1=255 (step idle delay, msec)
+$2=0 (step port invert mask:00000000)
+$3=4 (dir port invert mask:00000100)
+$4=0 (step enable invert, bool)
+$5=0 (limit pins invert, bool)
+$6=0 (probe pin invert, bool)
+$10=3 (status report mask:00000011)
+$11=0.020 (junction deviation, mm)
+$12=0.002 (arc tolerance, mm)
+$13=0 (report inches, bool)
+$20=1 (soft limits, bool)
+$21=0 (hard limits, bool)
+$22=1 (homing cycle, bool)
+$23=3 (homing dir invert mask:00000011)
+$24=50.000 (homing feed, mm/min)
+$25=635.000 (homing seek, mm/min)
+$26=20 (homing debounce, msec)
+$27=10.000 (homing pull-off, mm)
+$100=2560.000 (x, step/mm)
+$101=2560.000 (y, step/mm)
+$102=4800.000 (z, step/mm)
+$110=300.000 (x max rate, mm/min)
+$111=300.000 (y max rate, mm/min)
+$112=150.000 (z max rate, mm/min)
+$120=16.000 (x accel, mm/sec^2)
+$121=16.000 (y accel, mm/sec^2)
+$122=16.000 (z accel, mm/sec^2)
+$130=168.000 (x max travel, mm)
+$131=101.000 (y max travel, mm)
+$132=50.000 (z max travel, mm)
+
+```
+
 ![GitHub Logo](/doc/media/Grbl Logo 250px.png)
 
 
